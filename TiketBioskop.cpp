@@ -2,6 +2,8 @@
 #include <iostream>
 // untuk menyimpan input yang telah dibuat
 #include <fstream>
+// ini digunakan untuk menampilkan message box
+#include <windows.h>
 // using namespace std berguna untuk supaya kita tidak perlu lagi mengetik seperti std::cout/cin
 using namespace std;
 
@@ -13,10 +15,11 @@ int main()
     int harga[max], nomor_tiket(0);
     long jumlah_tiket;
     long totalHarga(0);
-
     // ini digunakan untuk membaca setiap baris dari file satu persatu di dalam file pemesanan_tiket.txt
     ifstream nomorUrutan("data/pemesanan_tiket.txt");
     string line;
+
+    // untuk melanjutkan nomor urut pesanan yang sudah terdata pada file pemesanan_tiket.txt agar tidak duplikat urutannya
     while (getline(nomorUrutan, line))
     {
         nomor_tiket++;
@@ -31,7 +34,6 @@ int main()
         cout << "========================= Pemesanan Tiket Bioskop =========================" << endl;
         cout << "===========================================================================" << endl;
         cout << endl;
-
         // jika jumlah pesanan tiket valid maka program akan lanjut ke tahap pemasukkan data pemesan
         //  jika jumlah pesanan tiket tidak valid maka program akan menyuruh untuk memasukkan jumlah yang valid
         do
@@ -66,6 +68,7 @@ int main()
             cin >> harga[i];
             // menampilkan output untuk input tempat tempat duduk
             cout << "Tempat duduk: ";
+            cin.ignore();
             getline(cin, tmpt_duduk[i]);
             cout << endl;
             totalHarga += harga[i];
@@ -100,6 +103,9 @@ int main()
         cout << "Total harga: " << totalHarga << endl
              << endl;
         cout << "===========================================================================" << endl;
+
+        // untuk membuat pemberitahuan pop up message bahwa pesanan tiket telah dibuat
+        MessageBoxW(NULL, L"Pesanan Tiket telah dibuat", L"Informasi", MB_ICONINFORMATION | MB_TOPMOST);
         cout << "Data telah disimpan di 'data/pemesanan_tiket.txt'" << endl;
 
         // menampilkan pemberitahuan apakah user ingin memesan tiket lagi
