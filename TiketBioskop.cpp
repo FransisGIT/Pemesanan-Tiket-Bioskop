@@ -1,8 +1,8 @@
 // untuk menggunakan fungsi input dan output
 #include <iostream>
-// untuk menyimpan input yang telah dibuat
+// untuk menggunakan fungsi ifstream yang digunakan untuk menyimpan data yang telah diinput
 #include <fstream>
-// ini digunakan untuk menampilkan message box
+// ini digunakan untuk munggunakan fungsi message box
 #include <windows.h>
 // using namespace std berguna untuk supaya kita tidak perlu lagi mengetik seperti std::cout/cin
 using namespace std;
@@ -89,6 +89,9 @@ int main()
         }
 
         // Menampilkan detail dari pemesan tiket
+
+        system("cls");
+        cout << "===========================================================================" << endl;
         cout << "========================= Struk Pemesanan Tiket ============================" << endl;
         cout << "===========================================================================" << endl;
         cout << "NO    \tPEMESAN    \tTEMPAT DUDUK    \tHARGA     \tFILM" << endl;
@@ -104,7 +107,7 @@ int main()
             cout << "\t\t" << film[i];
             while (lanjut)
             {
-                // Menulis data dari pesanan tiket ke file pemesanan_tiket.txt
+                // menyimpan data pesanan tiket yang telah diinput ke dalam file pemesanan_tiket.txt
                 outputFile << nomor_tiket + 1 << ',' << nama_pemesan[i] << ',' << film[i] << ',' << harga[i] << ',' << tmpt_duduk[i] << '\n';
                 nomor_tiket++;
                 // untuk memberhentikan program while
