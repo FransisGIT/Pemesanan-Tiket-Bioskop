@@ -42,6 +42,7 @@ int main()
             cout << "Masukkan jumlah tiket yang ingin dipesan: ";
             cin >> jumlah_tiket;
 
+            // jika jumlah tiket sama dengan 0 atau kurang dari 0 maka program akan melakukan tahap dibawah ini
             if (jumlah_tiket <= 0)
             {
                 // menampilkan output untuk pemberitahuan tidak valid saat jumlah tiket tidak valid
@@ -59,16 +60,28 @@ int main()
             // menampilkan output untuk input Nama pemesan
             cout << "Nama pemesan: ";
             cin.ignore();
+
+            // menampilkan input untuk nama pemesanan tiket
             getline(cin, nama_pemesan[i]);
+
             // menampilkan output untuk input Film yang dipesan
             cout << "Film yang dipesan: ";
+
+            // menampilkan input untuk film yang mau dipesan
             getline(cin, film[i]);
+
             // menampilkan output untuk input Harga tiket
             cout << "Harga tiket: ";
+
             cin >> harga[i];
             // menampilkan output untuk input tempat tempat duduk
+
+            // menampilkan output untuk pemesanan tempat duduk
             cout << "Tempat duduk: ";
+
             cin.ignore();
+
+            // menampilkan input untuk pemesanan tempat duduk
             getline(cin, tmpt_duduk[i]);
             cout << endl;
             totalHarga += harga[i];
@@ -80,6 +93,7 @@ int main()
         cout << "===========================================================================" << endl;
         cout << "NO    \tPEMESAN    \tTEMPAT DUDUK    \tHARGA     \tFILM" << endl;
 
+        // fungsi ini untuk mengulang detail pesanan dari jumlah tiket yang dipesan
         for (int i = 0; i < jumlah_tiket; i++)
         {
             // menampilkan detail dari pesanan tiket/ Struk
@@ -93,6 +107,7 @@ int main()
                 // Menulis data dari pesanan tiket ke file pemesanan_tiket.txt
                 outputFile << nomor_tiket + 1 << ',' << nama_pemesan[i] << ',' << film[i] << ',' << harga[i] << ',' << tmpt_duduk[i] << '\n';
                 nomor_tiket++;
+                // untuk memberhentikan program while
                 break;
             }
             cout << endl
